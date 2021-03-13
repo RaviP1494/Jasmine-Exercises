@@ -2,6 +2,7 @@ describe('payments tests', function () {
     beforeEach(function () {
         billAmtInput.value = 50;
         tipAmtInput.value = 10;
+
     });
 
     it('should add payment to allPayments when submitPaymentInfo() is called', function () {
@@ -19,6 +20,16 @@ describe('payments tests', function () {
     it('should add row to Payment Table when calling appendPaymentTable()', function () {
         let pay = createCurPayment();
         appendPaymentTable(pay);
+        expect(paymentTbody.firstElementChild.tagName).toEqual('TR');
+        expect(paymentTbody.firstElementChild.firstElementChild.innerText).toEqual('$50');
+        expect(paymentTbody.firstElementChild.lastElementChild.innerText).toEqual('20%');
+    });
+
+    it("should update summary table row td's when calling updateSummary()", function () {
+        submitPaymentInfo();
+        updateSummary();
+        expect(summaryTds[0].innerText).toEqual('$50');
+        expect(summaryTds[1].innerText).toEqual('$10');
     });
 
     afterEach(function () {
