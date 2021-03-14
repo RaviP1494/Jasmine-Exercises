@@ -22,7 +22,7 @@ describe('payments tests', function () {
         appendPaymentTable(pay);
         expect(paymentTbody.firstElementChild.tagName).toEqual('TR');
         expect(paymentTbody.firstElementChild.firstElementChild.innerText).toEqual('$50');
-        expect(paymentTbody.firstElementChild.lastElementChild.innerText).toEqual('20%');
+        expect(paymentTbody.firstElementChild.lastElementChild.previousElementSibling.innerText).toEqual('20%');
     });
 
     it("should update summary table row td's when calling updateSummary()", function () {

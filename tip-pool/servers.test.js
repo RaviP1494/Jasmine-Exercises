@@ -15,7 +15,7 @@ describe("Servers test (with setup and tear-down)", function () {
     submitServerInfo();
 
     expect(document.querySelector('#server' + serverId).firstElementChild.innerText).toBe('Alice');
-    expect(document.querySelector('#server' + serverId).lastElementChild.innerText).toBe('$0.00');
+    expect(document.querySelector('#server' + serverId).firstElementChild.nextElementSibling.innerText).toBe('$0.00');
   })
 
   afterEach(function () {
